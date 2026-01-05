@@ -15,7 +15,7 @@
 
 # 비쥬얼스튜디오 코드(VSCode)
 # streamlit 터미널 실행 명령어
-# streamlit run test_generate_ads.py
+# streamlit run generate_ads.py
 
 ##### 기본 정보 입력 #####
 import streamlit as st   # streamlit 패키지 -> Elias(앨리아스) st 
@@ -23,7 +23,7 @@ import openai   # openai 패키지 불러오기
 
 ##### 기능 구현 함수 #####
 ##### 프로그램 내에서 ChatGPT한테 물어보거나 번역을 지시한다거나 하는 그러한 기능들을 깔끔하게 함수화해서 정리
-def ask_gpt(prompt):
+def ask_gpt(prompt: str) -> str:
     """
     Description: ChatGPT 텍스트 응답 메시지 가져오기
 
