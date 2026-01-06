@@ -17,9 +17,9 @@
 # streamlit 터미널 실행 명령어
 # streamlit run generate_ads.py
 
-##### 기본 정보 입력 #####
-import streamlit as st   # streamlit 패키지 -> Elias(앨리아스) st 
-import openai   # openai 패키지 불러오기 
+##### 패키지 불러오기 #####
+import streamlit as st   # streamlit -> Elias(앨리아스) st 
+import openai   # OpenAI 
 
 ##### 기능 구현 함수 #####
 ##### 프로그램 내에서 ChatGPT한테 물어보거나 번역을 지시한다거나 하는 그러한 기능들을 깔끔하게 함수화해서 정리
@@ -40,7 +40,7 @@ def ask_gpt(prompt: str) -> str:
 
 ##### 메인 함수 #####
 ##### streamlit 패키지 활용해서 프로그램 UI 작성 및 기능 구현 함수 "ask_gpt" 호출해서 프로그램 동작하게 하는 메인 코드 작성된 함수 
-def main():
+def main() -> None:
     """
     Description: 메인 함수
 
