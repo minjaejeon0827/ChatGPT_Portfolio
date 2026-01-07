@@ -18,28 +18,12 @@
 # streamlit run generate_ads.py
 
 ##### 패키지 불러오기 #####
+from utils import openAI_util   # OpenAI 전용 유틸 (util)
+
 import streamlit as st   # streamlit -> Elias(앨리아스) st 
-import openai   # OpenAI 
-
-##### 기능 구현 함수 #####
-##### 프로그램 내에서 ChatGPT한테 물어보거나 번역을 지시한다거나 하는 그러한 기능들을 깔끔하게 함수화해서 정리
-def ask_gpt(prompt: str) -> str:
-    """
-    Description: ChatGPT 텍스트 응답 메시지 가져오기
-
-    Parameters: prompt - 사용자 질문 내용
-
-    Returns: msg - ChatGPT 텍스트 응답 메시지
-    """
-
-    messages_prompt = [{"role": "system", "content": prompt}]   # ChatGPT API에게 개발자가 요구하는 prompt input 양식 변경 및 해당 input 양식을 messages_prompt 변수 저장
-    response = openai.ChatCompletion.create(model='gpt-3.5-turbo', messages=messages_prompt)  # ChatGPT 응답 받기 및 response 변수 저장
-
-    msg = response["choices"][0]["message"]["content"]   # ChatGPT 텍스트 응답 메시지 msg 변수 저장
-    return msg
 
 ##### 메인 함수 #####
-##### streamlit 패키지 활용해서 프로그램 UI 작성 및 기능 구현 함수 "ask_gpt" 호출해서 프로그램 동작하게 하는 메인 코드 작성된 함수 
+##### streamlit 패키지 활용해서 프로그램 UI 작성 및 기능 구현 함수 "ask_gpt" 호출해서 프로그램 동작하게 하는 메인 코드 작성된 함수
 def main() -> None:
     """
     Description: 메인 함수
@@ -60,7 +44,7 @@ def main() -> None:
         # 참고 3 URL - https://jino-dev-diary.tistory.com/42
         # 참고 4 URL - https://claude.ai/chat/eaf7856e-1b5e-4c26-992e-de1683005638
         if open_api_key:   # open_api_key 변수 할당된 값이 None 또는 공백("")이 아닌 경우 (None or Empty String Check)
-            openai.api_key = open_api_key   # openai.api_key 변수에 입력 받은 open_api_key 값을 저장 (이렇게 처음에 OpenAI API 키 지정 한번 해 놓으면 OpenAI 패키지를 사용하는 코드 안에서는 더이상 따로 API 입력할 필요 없음.)
+            openAI_util.openai.api_key = open_api_key   # openai.api_key 변수에 입력 받은 open_api_key 값을 저장 (이렇게 처음에 OpenAI API 키 지정 한번 해 놓으면 OpenAI 패키지를 사용하는 코드 안에서는 더이상 따로 API 입력할 필요 없음.)
         st.markdown('---')   # 구분선 추가('---') - 혹시 밑에 다른 엘리멘트들을 추가할 때 대비해서 구현.
 
     # 메인 공간
@@ -91,7 +75,7 @@ def main() -> None:
                   - 필수 포함 키워드: {keyword}
                   '''
         
-        st.info(ask_gpt(prompt))   # 함수 ask_gpt 호출 및 웹브라우저 화면 "광고 문구 생성" 버튼 하단 ChatGPT 텍스트 응답 메시지 출력. 
+        st.info(openAI_util.ask_gpt(prompt))   # 함수 ask_gpt 호출 및 웹브라우저 화면 "광고 문구 생성" 버튼 하단 ChatGPT 텍스트 응답 메시지 출력.
 
 if __name__=='__main__':
     main()   # 메인 함수 실행
