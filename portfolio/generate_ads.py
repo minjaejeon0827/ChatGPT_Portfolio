@@ -60,8 +60,8 @@ def main() -> None:
         # 참고 3 URL - https://jino-dev-diary.tistory.com/42
         # 참고 4 URL - https://claude.ai/chat/eaf7856e-1b5e-4c26-992e-de1683005638
         if open_api_key:   # open_api_key 변수 할당된 값이 None 또는 공백("")이 아닌 경우 (None or Empty String Check)
-            openai.api_key = open_api_key   # openai.api_key 변수에 입력 받은 open_api_key 값을 저장 (이렇게 처음에 OpenAI API 키 지정 한번 해 놓으면 OpenAI 패키지를 사용하는 코드 안에서는 더이상 따로 API 입력할 필요 없음.) 
-        st.markdown('---')   # 구분선 추가('---') - 혹시 밑에 다른 엘리멘트들을 추가할 때를 대비해서 구현.
+            openai.api_key = open_api_key   # openai.api_key 변수에 입력 받은 open_api_key 값을 저장 (이렇게 처음에 OpenAI API 키 지정 한번 해 놓으면 OpenAI 패키지를 사용하는 코드 안에서는 더이상 따로 API 입력할 필요 없음.)
+        st.markdown('---')   # 구분선 추가('---') - 혹시 밑에 다른 엘리멘트들을 추가할 때 대비해서 구현.
 
     # 메인 공간
     st.header("🎸광고 문구 생성 프로그램")   # "🎸광고 문구 생성 프로그램" 프로그램 제목 화면 출력 (이모지 🎸추가 가능)
@@ -80,7 +80,7 @@ def main() -> None:
         tone_manner = st.text_input("톤엔 메너", placeholder="발랄하게, 유머러스하게, 감성적으로...")
         brand_value = st.text_input("브랜드 핵심 가치", placeholder="필요 시 입력")
 
-    if st.button("광고 문구 생성"):   # "광고 문구 생성" 버튼 생성 및 해당 버튼 Click 이벤트 발생시 if 문 실행 
+    if st.button("광고 문구 생성"):   # "광고 문구 생성" 버튼 화면 출력 및 해당 버튼 Click 이벤트 발생시 if 문 실행
         prompt = f'''
                   아래 내용 참고해서 1~2줄 짜리 광고 문구 8개 작성해줘
                   - 제품명: {product_name}
