@@ -1,5 +1,10 @@
 """
 * OpenAI 전용 유틸 (util) openai==0.28.1
+
+*** 참고 ***
+*** ChatGPT 문서 ***
+* ChatGPT 텍스트 응답 메시지
+참고 URL - https://github.com/openai/openai-python
 """
 
 import openai
