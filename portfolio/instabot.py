@@ -127,7 +127,7 @@ def get_downLoad_imageFromDALLE2(topic: str, mood: str) -> None:
     t_mood = google_trans(mood)     # 분위기
     
 
-    # f'~~~~~' - 시스템 프롬프트와 매개변수 t_topic, t_mood 합쳐서 구현.
+    # f'~~~~~' - 시스템 프롬프트와 t_topic, t_mood 변수 합쳐서 구현.
     # 시스템 프롬프트 문자열
     # 1. 해당 주제에 대해서 그림 그리기 (Draw picture about {t_topic})
     # 2. 그림의 분위기는 다음과 같다. (picture Mood is {t_mood}')
