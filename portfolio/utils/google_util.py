@@ -3,16 +3,16 @@
 
 *** 참고 ***
 *** 파이썬 문서 ***
-* 구글 번역기 오픈 소스 패키지 googletrans
+* Google 번역기 오픈 소스 패키지 googletrans
 참고 URL - https://pypi.org/project/googletrans/
 """
 
 ##### 패키지 불러오기 #####
-from googletrans import Translator   # 구글 번역기
+from googletrans import Translator   # Google 번역기
 
 def translate(messages: str, lang_type: str) -> str:
     """
-    Description: 구글 번역 (DALLE2 이미지 생성 용도 포함)
+    Description: Google 번역 (DALLE2 이미지 생성 용도 포함)
 
                  *** 참고 ***
                  현재 DALLE2에서 한글 텍스트 사용시 이미지가 엉망진창으로 생성됨.
