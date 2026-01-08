@@ -77,7 +77,7 @@ def main():
                   '''
         
         messages_prompt = [{"role": "system", "content": prompt}]   # ChatGPT API에게 개발자가 요구하는 prompt input 양식 변경 및 해당 input 양식을 messages_prompt 변수 저장
-        st.info(openAI_util.get_response(messages_prompt))   # 함수 get_response 호출 및 웹브라우저 화면 "광고 문구 생성" 버튼 하단 ChatGPT 텍스트 응답 메시지 출력.
+        st.info(openAI_util.get_response(messages_prompt))   # get_response 함수 호출 및 프로그램 화면 "요약" 버튼 하단 ChatGPT 텍스트 응답 메시지 출력.
 
 if __name__=="__main__":
     main()   # 메인 함수 실행
