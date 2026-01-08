@@ -50,14 +50,14 @@ def main() -> None:
     st.markdown('---')   # 구분선 추가('---')
 
     # 세로 공간 나누기
-    col1, col2 = st.columns(2)   # 웹브라우저 화면 사이드바 우측 메인 공간 2등분 및 2등분 한 각각의 공간 이름 왼쪽 공간 col1, 오른쪽 공간 col2 지정
+    col1, col2 = st.columns(2)   # 프로그램 화면 사이드바 우측 메인 공간 2등분 및 2등분 한 각각의 공간 이름 왼쪽 공간 col1, 오른쪽 공간 col2 지정
 
-    with col1:  # 메인 공간의 왼쪽 공간 col1에 name, product_strength, keyword 작성(추가) -> 웹브라우저 화면 왼쪽 공간 col1 데이터 시각화
+    with col1:  # 메인 공간의 왼쪽 공간 col1에 name, product_strength, keyword 작성(추가) -> 프로그램 화면 왼쪽 공간 col1 데이터 시각화
         product_name = st.text_input("제품명", placeholder=" ")
         product_strength = st.text_input("제품 특징", placeholder=" ")
         keyword = st.text_input("필수 포함 키워드", placeholder=" ")
 
-    with col2:  # 메인 공간의 오른쪽 공간 col2에 brand_name, tone_manner, value 작성(추가) -> 웹브라우저 화면 오른쪽 공간 col2 데이터 시각화
+    with col2:  # 메인 공간의 오른쪽 공간 col2에 brand_name, tone_manner, value 작성(추가) -> 프로그램 화면 오른쪽 공간 col2 데이터 시각화
         brand_name = st.text_input("브랜드 명", placeholder="Apple, 올리브영...")
         tone_manner = st.text_input("톤엔 메너", placeholder="발랄하게, 유머러스하게, 감성적으로...")
         brand_value = st.text_input("브랜드 핵심 가치", placeholder="필요 시 입력")
@@ -74,7 +74,7 @@ def main() -> None:
                   '''
         
         messages_prompt = [{"role": "system", "content": prompt}]   # ChatGPT API에게 개발자가 요구하는 prompt input 양식 변경 및 해당 input 양식을 messages_prompt 변수 저장
-        st.info(openAI_util.get_response(messages_prompt))   # 함수 get_response 호출 및 웹브라우저 화면 "광고 문구 생성" 버튼 하단 ChatGPT 텍스트 응답 메시지 출력.
+        st.info(openAI_util.get_response(messages_prompt))   # get_response 함수 호출 및 프로그램 화면 "광고 문구 생성" 버튼 하단 ChatGPT 텍스트 응답 메시지 출력.
 
 if __name__=='__main__':
     main()   # 메인 함수 실행
