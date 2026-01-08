@@ -35,6 +35,20 @@ def get_response(messages_prompt: list[dict]) -> str:
     msg = response["choices"][0]["message"]["content"]   # ChatGPT 텍스트 응답 메시지 msg 변수 저장
     return msg
 
+def image_url_dalle2(prompt: str) -> str:
+    """
+    Description: DALLE.2 이미지 생성 및 URL 주소 가져오기
+
+    Parameters: prompt - 사용자 작성 내용
+
+    Returns: image_url - 이미지 URL 주소
+    """
+
+    response = openai.Image.create(prompt=prompt,n=1,size="512x512")   # 이미지 생성 및 response 변수 저장
+
+    image_url = response['data'][0]['url']   # 이미지 URL 주소(response['data'][0]['url']) image_url 변수 저장
+    return image_url   # 이미지 다운로드 받을 수 있는 URL 주소 리턴
+
 
 def downLoad_image_dalle2(topic: str, mood: str) -> None:
     """
