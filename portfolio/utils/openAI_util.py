@@ -6,6 +6,16 @@
 * ChatGPT 텍스트 응답 메시지
 참고 URL - https://github.com/openai/openai-python
 
+*** DALLE.2 문서 ***
+* 주의사항
+1. 특정 유명인 (예) 도널드 트럼프, 바이든 등등… 을 그림 그려달라고 요청 시 오류 발생 
+   참고 URL - https://community.openai.com/t/your-request-was-rejected-as-a-result-of-our-safety-system-your-prompt-may-contain-text-that-is-not-allowed-by-our-safety-system/285641
+   1번 오류 발생시 위의 ChatGPT로 부터 답변받기 함수 "get_response" 몸체 안 변수 "messages_prompt"에 할당되는 시스템 프롬프트 문자열(항목 "content") 아래처럼 변경 후 컴파일 빌드 다시 실행 필요 
+(변경 전) messages_prompt = [{"role": "system", "content": 'You are a thoughtful assistant. Respond to all input in 25 words and answer in korea'}]
+(변경 후) messages_prompt = [{"role": "system", "content": 'You are a thoughtful assistant. Respond to all input in 100 words and answer in korea'}]
+2. 영어가 아닌 한글로 그림 그려달라고 요청 시 요청사항과 전혀 다른 그림으로 그려줌.
+3. 사용자가 그림 그려달라고 요청시 시간 소요됨 (간단한 그림은 몇초 단위 / 복잡한 그림은 그 이상 시간 소요)
+
 *** 파이썬 문서 ***
 * urllib
 참고 URL - https://docs.python.org/ko/3.13/library/urllib.html
