@@ -33,6 +33,9 @@ import threading    # 멀티스레드
 import time         # 챗봇 답변 시간 계산
 import os           # 폴더/파일 처리
 
+API_KEY = "API_key"
+openAI_util.openai.api_key = API_KEY   # OpenAI API 키 입력
+
 def init_tmp_file(file_path: str) -> None:
     """
     Description: 임시 로그 텍스트 파일 초기화
@@ -179,7 +182,15 @@ def responseOpenAI(kakao_request: dict[str, Any], res_queue: Queue, file_path: s
         init_tmp_file(file_path)   # 임시 로그 텍스트 파일 초기화
         
         prompt = kakao_request["userRequest"]["utterance"].replace("/ask", "")   # 사용자 입력 채팅 메세지(kakao_request["userRequest"]["utterance"]) 포함된 "/ask" 문자열 공백("") 변경 및 나머지 문자열 prompt 변수 저장
-        bot_res = openAI_util.get_response(prompt)   # ChatGPT 텍스트 응답 메시지 가져오기
+        
+        # messages_prompt - 시스템 프롬프트와 prompt 변수 합쳐서 구현.
+        # 시스템 프롬프트 문자열
+        # 넌 훌륭한 도우미고 답변은 25자 내외로 한국어로 해줘.
+        # messages_prompt = [{"role": "system", "content": 'You are a thoughtful assistant. Respond to all input in 25 words and answer in korea'}]
+        messages_prompt = [{"role": "system", "content": 'You are a thoughtful assistant. Respond to all input in 25 words and answer in korea'}]
+        messages_prompt += [{"role": "user", "content": prompt}]
+
+        bot_res = openAI_util.get_response(messages_prompt)   # ChatGPT 텍스트 응답 메시지 가져오기
         res_queue.put(kakao_util.simple_text(bot_res))   # 텍스트 메시지 (text) 카카오톡 채팅방 전송
         print(bot_res)
 
