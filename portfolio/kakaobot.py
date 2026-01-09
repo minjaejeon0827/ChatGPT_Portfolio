@@ -48,7 +48,7 @@ def init_tmp_file(file_path: str) -> None:
     with open(file_path, 'w') as f:   # 임시 로그 텍스트 파일 열기
         f.write("")
 
-###### 서버 생성 단계 #######
+###### FastAPI 웹서버 생성 단계 #######
 app = FastAPI()   # FastAPI 클래스 객체 생성 (app)
 
 @app.get("/")   # HTTP 통신(get) - 메인 주소("/") 접속
