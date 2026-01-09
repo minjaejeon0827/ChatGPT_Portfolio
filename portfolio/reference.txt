@@ -64,12 +64,19 @@
 # portfolio_env\Scripts\activate.bat
 
 # 주의사항 
-# 비동기(async - await) 웹서버 생성하는 유비콘 패키지 "uvicorn[standard]"를 사용하는 파이썬 파일의 경우 
-# 일반 파이썬 파일을 터미널에서 실행하는 명령어(python test_kakaobot.py)를 
+# 1. 비동기(async - await) 웹서버 생성하는 유비콘 패키지 "uvicorn[standard]"를 사용하는 파이썬 파일의 경우 
+# 일반 파이썬 파일을 터미널에서 실행하는 명령어(python kakaobot.py)를 
 # 그대로 쓰면 파일 안에 있는 FastAPI 서버(FastAPI 클래스 객체 app)가 생성 불가하다.
 # 하여 비동기(async - await) 웹서버 생성하는 유비콘 패키지 "uvicorn[standard]"를 사용하는 파이썬 파일은
 # 아래와 같은 명령어를 입력 해야만 해당 파일 안에 있는 FastAPI 서버(FastAPI 클래스 객체 app)가 생성된다.
-# uvicorn test_kakaobot:app --reload
+# uvicorn kakaobot:app --reload
+
+# 2. 비동기(async - await) 웹서버 생성하는 유비콘 패키지 "uvicorn[standard]"를 사용하는 파이썬 파일의 경우 
+# 일반 파이썬 파일을 터미널에서 실행하는 명령어(python telegramebot.py)를
+# 그대로 쓰면 파일 안에 있는 FastAPI 서버(FastAPI 클래스 객체 app)가 생성 불가하다.
+# 하여 비동기(async - await) 웹서버 생성하는 유비콘 패키지 "uvicorn[standard]"를 사용하는 파이썬 파일은
+# 아래와 같은 명령어를 입력 해야만 해당 파일 안에 있는 FastAPI 서버(FastAPI 클래스 객체 app)가 생성된다.
+# uvicorn telegramebot:app --reload
 
 
 # ngrok 역할?
@@ -87,9 +94,9 @@
 
 # ngrok 응용 프로그램 실행 방법
 # 1) 비쥬얼스튜디오코드(VSCode) 실행 
-#    -> 유비콘 패키지 "uvicorn[standard]"를 사용하는 파이썬 파일 "test_kakaobot.py" 또는 "test_telegramebot.py" 열기
+#    -> 유비콘 패키지 "uvicorn[standard]"를 사용하는 파이썬 파일 "kakaobot.py" 또는 "telegramebot.py" 열기
 #    -> OpenAI API 키 값 입력 
-#    -> 터미널창 열어서 명령어 "uvicorn test_kakaobot:app --reload" 입력 및 엔터 
+#    -> 터미널창 열어서 명령어 "uvicorn kakaobot:app --reload" 입력 및 엔터 
 #    -> FastAPI 서버(FastAPI 클래스 객체 app)가 정상적으로 생성 완료
 
 # 2) 텔레그램 응용 프로그램 실행 
@@ -110,7 +117,7 @@
 #    -> 외부 서버에서도 개발자 로컬 PC로 접속할 수 있는 URL 주소 생성 
 # 참고사항 
 # - 위에 명령어 중 "8000"이 뜻하는 바는 개발자 로컬 PC안에 포트(Port) 번호를 의미함.
-# - 파이썬 파일 "test_kakaobot.py"을 유비콘 패키지 "uvicorn[standard]"를 사용하여 FastAPI 웹서버를 생성해 놓은 상태이다.
+# - 파이썬 파일 "kakaobot.py"을 유비콘 패키지 "uvicorn[standard]"를 사용하여 FastAPI 웹서버를 생성해 놓은 상태이다.
 #   FastAPI 서버 로컬 PC URL 주소는 "http://127.0.0.1:8000" 이다.
 #   해당 URL 주소 중 "http://127.0.0.1"은 개발자의 로컬 PC를 의미하며,
 #   "8000"은 개발자의 로컬 PC 안에서 몇동 몇호, 즉 예를들어 105동 105호가 "8000"을 뜻한다.
@@ -151,7 +158,7 @@
 #    -> 챗봇 관리자 센터 화면 좌측 탭 "스킬" 클릭 -> "스킬 목록" 클릭
 #    -> "스킬 목록" 화면 이동 -> 버튼 "생성" 클릭
 
-# 9) "스킬명을 입력해주세요" 화면 이동 -> 화면 상단 "스킬명을 입력해주세요"에 스킬명을 "test_kakaobot" 입력
+# 9) "스킬명을 입력해주세요" 화면 이동 -> 화면 상단 "스킬명을 입력해주세요"에 스킬명을 "kakaobot" 입력
 #    -> 항목 "설명"에 내용 작성 생략 -> 항목 "URL"에 7)번에서 ngrok 응용 프로그램으로 생성한 
 #       외부 서버에서도 개발자 로컬 PC로 접속할 수 있는 
 #       FastAPI 웹서버 URL 주소(https://c84e-14-52-67-173.ngrok-free.app) 뒤에 "/chat/" 붙인 
@@ -164,13 +171,13 @@
 #    -> 하여 해당 "JSON" 데이터를 가지고 디버깅 하면서 스킬 테스트를 진행할 수 있다.
 #       해당 "JSON" 우측 하단 버튼 "스킬서버로 전송" 클릭
 #    -> "스킬서버로 전송" 기능이 잘 실행되었는지 확인하려면
-#       비쥬얼 스튜디오 코드 돌아와서 FastAPI 개발자 로컬 PC 비동기 웹서버 파이썬 파일(test_kakaobot.py)
+#       비쥬얼 스튜디오 코드 돌아와서 FastAPI 개발자 로컬 PC 비동기 웹서버 파이썬 파일(kakaobot.py)
 #       @app.post("/chat/") 메서드 호출 -> async def chat(request: Request): 함수 실행 
 #       -> 코드 kakaorequest = await request.json() 실행 ->  
 #       print(kakaorequest) 함수 호출하여 터미널창에서 아래와 같은 결과가 출력되면 
 #       "스킬서버로 전송" 기능이 잘 실행되었다는 것을 확인할 수 있다.
 #       하여 해당 결과를 통하여 카카오톡 챗봇(카카오톡 서버)과 
-#       FastAPI 개발자 로컬 PC 비동기 웹서버 파이썬 파일(test_kakaobot.py)이
+#       FastAPI 개발자 로컬 PC 비동기 웹서버 파이썬 파일(kakaobot.py)이
 #       연결이 아주 잘 되는 것을 확인할 수 있다.   
 # {'intent': {
 #             'id': 'qj4nick9o33seydhqobmj65t', 
@@ -190,7 +197,7 @@
 
 # 10) "챗봇 관리자센터" 화면 좌측 상단 버튼 "시나리오" 클릭 
 #     -> "시나리오" 화면 이동 -> 버튼 "+ 시나리오" 클릭 -> "시나리오" 화면 좌측 탭 "기본 시나리오" 하단 버튼 "폴백 블록" 클릭
-#     -> "블록 이름을 입력해주세요" 출력 -> 항목 "파라미터 설정" 우측 체크 박스 "스킬 검색/선택" 클릭 -> 위에서 생성했던 스킬인 "test_kakaobot" 클릭
+#     -> "블록 이름을 입력해주세요" 출력 -> 항목 "파라미터 설정" 우측 체크 박스 "스킬 검색/선택" 클릭 -> 위에서 생성했던 스킬인 "kakaobot" 클릭
 #     -> "시나리오" 화면 마우스 스크롤 아래로 내려서 항목 "봇 응답" 아래 
 #        말풍선 형태 항목 "첫번째 응답 -텍스트형"의 
 #        하위 항목 "+ 응답 추가 (0/3)" 아래에 있는 버튼 "스킬데이터" 클릭
